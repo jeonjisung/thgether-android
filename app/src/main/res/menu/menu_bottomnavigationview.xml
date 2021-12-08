@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/map"
+        android:icon="@drawable/map"
+        android:title="지도" />
+    <item
+        android:id="@+id/running"
+        android:icon="@drawable/running"
+        android:title="만보기"/>
+    <item
+        android:id="@+id/person"
+        android:icon="@drawable/person"
+        android:title="내 정보"/>
+</menu>

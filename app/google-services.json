@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1084495372800",
+    "project_id": "trashcan-14f2f",
+    "storage_bucket": "trashcan-14f2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084495372800:android:9e266588824db9c046eee5",
+        "android_client_info": {
+          "package_name": "kr.co.oliveandwine.trashcan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084495372800-esnplusomf696q6ts2obt98v25179vo9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.co.oliveandwine.trashcan",
+            "certificate_hash": "3ceefbded145dce8bd2a4fa32916cd840f5397d7"
+          }
+        },
+        {
+          "client_id": "1084495372800-tcfjan2j3928tq2ttm7jl34r393mmmr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjBA51KdbyFRY90J3YcOsGh7owar-WjAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084495372800-tcfjan2j3928tq2ttm7jl34r393mmmr6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
