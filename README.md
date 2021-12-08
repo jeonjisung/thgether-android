@@ -1,4 +1,5 @@
-![](C:\Users\ansfk\img\thgether.png)
+![thgether](https://user-images.githubusercontent.com/74092089/145195535-80ca3987-64cc-4a70-94f4-38025864c4b4.png)
+
 ### 설명
 
 주변 공공 쓰레기통 위치를 확인할 수 있습니다. 또한, 공공 쓰레기통, 가로 휴지통이 등록되지 않은 지역에 직접 위치를 등록하여 사람들과 공유할 수 있습니다 !
