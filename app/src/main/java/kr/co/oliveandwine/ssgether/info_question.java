@@ -47,11 +47,6 @@ public class info_question extends AppCompatActivity {
                 " 3. 환경 관련 캠페인 추진(ESG 경영 추진 기업과 연계)\n" +
                 " 4. IoT 기반 스마트 쓰레기통 제작및 연계 서비스 제공"));
         data.add(question4);
-        ExpandableListAdapter.Item question5 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "Q. 서비스 오류 및 개선 사항 신고");
-        question5.invisibleChildren = new ArrayList<>();
-        question5.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "A. '쓰게더'는 항상 여러분의 목소리를 기다립니다.\n" +
-                "서비스 오류 및 개선 사항이 발생할 경우 'ansfk87@naver.com'으로 여러분의 목소리를 들려주시면 대단히 감사하겠습니다."));
-        data.add(question5);
         recyclerview.setAdapter(new ExpandableListAdapter(data));
     }
 }

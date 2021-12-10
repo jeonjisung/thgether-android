@@ -348,19 +348,12 @@ public class mapFragment extends Fragment implements OnMapReadyCallback {
                             mk.get(i).setOnClickListener(new Overlay.OnClickListener() {
                                 @Override
                                 public boolean onClick(@NonNull Overlay overlay) {
-                                    checkService = MainActivity.mainActivity.isServiceRunningCheck();
-                                    if (!checkService) {
-                                        MainActivity.mainActivity.startService();
-                                        ChocoList.getInstance().chocoGood(getActivity(), "만보기 서비스를 시작합니다.");
-                                    } else {
-                                        MainActivity.mainActivity.stopForeground();
-                                        ChocoList.getInstance().chocoBad(getActivity(), "만보기 시스템을 중지합니다.");
-                                    }
-//                                    sliding.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED); //to open
-//                                    markerDelete.setVisibility(markerDelete.VISIBLE);
-//                                    tvAddress.setText("");
-//                                    mContent.setText(contents.get(finalI));
-//                                    mWriter.setText(userIDs.get(finalI));
+
+                                    sliding.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED); //to open
+                                    markerDelete.setVisibility(markerDelete.VISIBLE);
+                                    tvAddress.setText("");
+                                    mContent.setText(contents.get(finalI));
+                                    mWriter.setText(userIDs.get(finalI));
                                     markerDelete.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {

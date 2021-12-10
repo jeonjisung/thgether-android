@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -233,27 +234,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/manboStart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:background="@color/olive_green"
                     android:text="도착지 설정"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
                     android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textSize="20dp" />
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/markerDelete"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btntype_1"
+                    android:layout_weight="1"
+                    android:background="@color/bg_screen1"
                     android:text="위치 삭제"
                     android:textAlignment="center"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     android:visibility="gone" />
             </LinearLayout>
 

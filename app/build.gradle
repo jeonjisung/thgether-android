@@ -10,7 +10,7 @@ android {
         applicationId "kr.co.oliveandwine.trashcan"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 7
+        versionCode 9
         versionName "1.0"
         multiDexEnabled true
 
