@@ -37,10 +37,9 @@ public class info_notice extends AppCompatActivity {
         notice2.invisibleChildren = new ArrayList<>();
         notice2.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "'쓰게더' v1.0이 정식 출시 되었습니다."));
         data.add(notice2);
-        ExpandableListAdapter.Item notice3 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "후원 문의");
+        ExpandableListAdapter.Item notice3 = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "후원 및 협업 제안");
         notice3.invisibleChildren = new ArrayList<>();
-        notice3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "후원 계좌 : (국민)945802-00-092366\n" +
-                "후원 문의 : ansfk87@naver.com"));
+        notice3.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "후원 및 협업 제안 : ansfk87@naver.com"));
         data.add(notice3);
         recyclerview.setAdapter(new ExpandableListAdapter(data));
     }
