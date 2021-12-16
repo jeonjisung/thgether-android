@@ -3,10 +3,16 @@ package kr.co.oliveandwine.ssgether;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+
+import kr.co.oliveandwine.ssgether.Adapter.Item.WalkLogItem;
 
 //========== 모바일상에서 데이터를 저장하기 위한 클래스(영구적) ==========
 public class S_Preference {
@@ -24,38 +30,26 @@ public class S_Preference {
         return context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 
-    public static void setStringArrayPref(Context context, String key, ArrayList<String> values) {
+    public static void setWalkLogArrayPref(Context context, String key, ArrayList<WalkLogItem> values) {
         SharedPreferences prefs = S_Preference.getPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
-        JSONArray a = new JSONArray();
-        for (int i = 0; i < values.size(); i++) {
-            a.put(values.get(i));
-        }
-        if (!values.isEmpty()) {
-            editor.putString(key, a.toString());
-        } else {
-            editor.putString(key, null);
-        }
+        Gson gson = new Gson();
+        String json = gson.toJson(values);
+        editor.putString(key, json);
+        editor.commit();
         editor.apply();
     }
 
-    public static ArrayList<String> getStringArrayPref(Context context, String key) {
+    public static ArrayList<WalkLogItem> getWalkLogArrayPref(Context context, String key) {
         SharedPreferences prefs = S_Preference.getPreferences(context);
+        Gson gson = new Gson();
         String json = prefs.getString(key, null);
-        ArrayList<String> urls = new ArrayList<String>();
-        if (json != null) {
-            try {
-                JSONArray a = new JSONArray(json);
-                for (int i = 0; i < a.length(); i++) {
-                    String url = a.optString(i);
-                    urls.add(url);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return urls;
+        Type type = new TypeToken<ArrayList<WalkLogItem>>() {
+        }.getType();
+        ArrayList<WalkLogItem> arrayList = gson.fromJson(json, type);
+        return arrayList;
     }
+
     //========== [String 값 저장] ==========
     /**
      * String 값 저장

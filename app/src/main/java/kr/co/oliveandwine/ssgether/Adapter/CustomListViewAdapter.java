@@ -1,17 +1,23 @@
 package kr.co.oliveandwine.ssgether.Adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.ArrayList;
 
 import kr.co.oliveandwine.ssgether.Adapter.Item.CustomListItem;
+import kr.co.oliveandwine.ssgether.Adapter.Item.WalkLogItem;
 import kr.co.oliveandwine.ssgether.R;
+import kr.co.oliveandwine.ssgether.S_Preference;
 import kr.co.oliveandwine.ssgether.Save.Save_Var;
 
 
@@ -55,33 +61,10 @@ public class CustomListViewAdapter extends BaseAdapter {
         tv_kcal.setText(myItem.getKcal());
         tv_contents.setText(myItem.getContents());
 
-        convertView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                    case MotionEvent.ACTION_UP:
-                        switch (position) {
-                            case 0:
-                                if (tv_name.getText().equals("1")) {
-                                }
-                                break;
-                            case 1:
-                                if (tv_name.getText().equals("2")) {
-                                }
-                                break;
-                            case 2:
-                                if (tv_name.getText().equals("3")) {
-                                }
-                                break;
-                        }
-                }
 
-                return false;
-            }
-        });
         return convertView;
     }
+
 
     /* 아이템 데이터 추가를 위한 함수. 자신이 원하는대로 작성 */
     public void addItem(String name, String kcal, String content) {
@@ -95,5 +78,9 @@ public class CustomListViewAdapter extends BaseAdapter {
         /* mItems에 MyItem을 추가한다. */
         mItems.add(mItem);
 
+    }
+
+    public void remove(int position) {
+        mItems.remove(position);
     }
 }

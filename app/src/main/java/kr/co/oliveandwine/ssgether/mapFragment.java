@@ -99,6 +99,7 @@ import java.util.concurrent.Executor;
 
 import kr.co.oliveandwine.ssgether.Adapter.CustomListViewAdapter;
 import kr.co.oliveandwine.ssgether.Adapter.Item.JavaItem;
+import kr.co.oliveandwine.ssgether.Adapter.Item.WalkLogItem;
 import kr.co.oliveandwine.ssgether.Save.Save_Var;
 import kr.co.oliveandwine.ssgether.util.PedometerService;
 import ted.gun0912.clustering.geometry.TedLatLng;
@@ -201,10 +202,6 @@ public class mapFragment extends Fragment implements OnMapReadyCallback {
         height = size.y;
 
         lm = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-
-        if(S_Preference.getInt(getContext(), "memoCount")==-1){
-            S_Preference.setInt(getContext(),"memoCount", 0);
-        }
 
         if(S_Preference.getInt(getContext(), "walkCountSum")==-1){
             S_Preference.setInt(getContext(),"walkCountSum", 0);
@@ -595,18 +592,12 @@ public class mapFragment extends Fragment implements OnMapReadyCallback {
                         String sum = year + "." + month + "." + day + " " + hour + ":" + minute;
                         Save_Var.getInstance().setWalkStopTime(sum);
 
-                        int memoCount = S_Preference.getInt(getContext(), "memoCount");
-
-                        S_Preference.setInt(getContext(),"memoCount", memoCount+1);
-
-                        ArrayList<String> saveString = new ArrayList<>();
-                        saveString.add(sum);
-                        saveString.add(Float.toString(PedometerService.mSteps/33)+" Kcal");
-                        saveString.add(PedometerService.mSteps+ " 걸음");
-
-                        S_Preference.setInt(getContext(),"walkCountSum", S_Preference.getInt(getContext(), "walkCountSum")+PedometerService.mSteps);
-                        S_Preference.setStringArrayPref(getContext(), "memo"+memoCount, saveString);
-
+//                        if(PedometerService.mSteps != 0){
+                            ArrayList<WalkLogItem> saveLog = S_Preference.getWalkLogArrayPref(getContext(), "walklog");
+                            saveLog.add(new WalkLogItem(sum, Float.toString(PedometerService.mSteps/33)+" Kcal",PedometerService.mSteps));
+                            S_Preference.setInt(getContext(),"walkCountSum", S_Preference.getInt(getContext(), "walkCountSum")+PedometerService.mSteps);
+                            S_Preference.setWalkLogArrayPref(getContext(), "walklog", saveLog);
+//                        }
                     }
                 }
             });

@@ -6,6 +6,17 @@ public class CustomListItem {
     private String kcal;
     private String contents;
 
+    public CustomListItem(){
+
+    }
+
+    public CustomListItem(String name, String kcal, String contents){
+        this.name = name;
+        this.kcal = kcal;
+        this.contents = contents;
+
+    }
+
     public String getKcal() {
         return kcal;
     }

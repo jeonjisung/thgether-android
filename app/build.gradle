@@ -94,6 +94,7 @@ dependencies {
     implementation 'com.github.Pradyuman7:ChocoBar:V1.5'
 
     implementation 'me.itangqi.waveloadingview:library:0.3.5'
+    compile 'com.google.code.gson:gson:2.8.2'
 }
 repositories {
     mavenCentral()

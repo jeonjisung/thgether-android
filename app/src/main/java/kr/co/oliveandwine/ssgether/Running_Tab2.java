@@ -1,12 +1,15 @@
 package kr.co.oliveandwine.ssgether;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +17,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import kr.co.oliveandwine.ssgether.Adapter.CustomListViewAdapter;
+import kr.co.oliveandwine.ssgether.Adapter.Item.CustomListItem;
+import kr.co.oliveandwine.ssgether.Adapter.Item.WalkLogItem;
 import kr.co.oliveandwine.ssgether.Save.Save_Var;
 import kr.co.oliveandwine.ssgether.util.PedometerService;
 
@@ -31,6 +36,9 @@ public class Running_Tab2 extends Fragment {
     ViewGroup viewGroup;
     ListView listView;
     TextView sumWalk;
+
+    ArrayList<WalkLogItem> walkLogItems;
+    ArrayList<CustomListItem> itemArrayList = new ArrayList<>();
 
     public Running_Tab2() {
         // Required empty public constructor
@@ -62,14 +70,42 @@ public class Running_Tab2 extends Fragment {
 
 
         CustomListViewAdapter listViewAdapter = new CustomListViewAdapter();
-        for(int i = 0; i < S_Preference.getInt(getContext(), "memoCount"); i++){
-            ArrayList<String> arrayList = S_Preference.getStringArrayPref(getContext(), "memo"+i);
-            listViewAdapter.addItem(""+arrayList.get(0), ""+arrayList.get(1), ""+arrayList.get(2));
+        walkLogItems = S_Preference.getWalkLogArrayPref(getContext(), "walklog");
+        for (int i = 0; i < walkLogItems.size(); i++) {
+            listViewAdapter.addItem(
+                    walkLogItems.get(i).getTime(),
+                    walkLogItems.get(i).getKcal(),
+                    walkLogItems.get(i).getWalkcount()+" 걸음");
         }
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("해당 기록을 삭제하시겠습니까?");
+                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        S_Preference.setInt(getContext(), "walkCountSum",
+                                S_Preference.getInt(getContext(), "walkCountSum")-walkLogItems.get(position).getWalkcount());
+                        walkLogItems.remove(position);
+                        S_Preference.setWalkLogArrayPref(getContext(), "walklog", walkLogItems);
+                        listViewAdapter.remove(position);
+                        listViewAdapter.notifyDataSetChanged();
+                        sumWalk.setText(S_Preference.getInt(getContext(), "walkCountSum") + " 걸음");
+                        Toast.makeText(getContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+                builder.setNegativeButton("취소", null);
+                builder.create().show();
+                return false;
+            }
+        });
 
         listView.setAdapter(listViewAdapter);
         sumWalk = viewGroup.findViewById(R.id.sum_walk);
-        sumWalk.setText(S_Preference.getInt(getContext(),"walkCountSum")+" 걸음");
+        sumWalk.setText(S_Preference.getInt(getContext(), "walkCountSum") + " 걸음");
         // Inflate the layout for this fragment
         return viewGroup;
     }

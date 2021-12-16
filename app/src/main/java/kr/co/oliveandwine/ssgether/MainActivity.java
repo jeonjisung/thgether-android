@@ -39,6 +39,7 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import kr.co.oliveandwine.ssgether.Adapter.Item.WalkLogItem;
 import kr.co.oliveandwine.ssgether.databinding.ActivityMainBinding;
 
 import androidx.databinding.DataBindingUtil;
@@ -49,6 +50,7 @@ import kr.co.oliveandwine.ssgether.util.StepCallback;
 
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import kr.co.oliveandwine.ssgether.Save.Save_Var;
@@ -134,6 +136,11 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
 
         mainActivity = this;
+
+        if(S_Preference.getWalkLogArrayPref(getApplicationContext(), "walklog")==null){
+            ArrayList<WalkLogItem> arrayList = new ArrayList<>();
+            S_Preference.setWalkLogArrayPref(getApplicationContext(), "walklog", arrayList);
+        }
 
     }
 

@@ -77,7 +77,6 @@ public class PedometerService extends Service implements SensorEventListener, Al
     public static ImageView saveImg = null;
     public static TextView saveTxt = null;
     public static ConstraintLayout saveLayout = null;
-    public static boolean inTab1 = false;
 
     // LocalBinder 클래스 생성
     public class PedometerBinder extends Binder {
