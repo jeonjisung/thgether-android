@@ -10,10 +10,9 @@ android {
         applicationId "kr.co.oliveandwine.trashcan"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 9
-        versionName "1.0"
+        versionCode 13
+        versionName "1.2.1"
         multiDexEnabled true
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -95,6 +94,9 @@ dependencies {
 
     implementation 'me.itangqi.waveloadingview:library:0.3.5'
     compile 'com.google.code.gson:gson:2.8.2'
+
+    implementation "com.google.android.gms:play-services-ads-identifier:$play_service_version"
+    implementation "com.kakao.adfit:ads-base:$adfit_version"
 }
 repositories {
     mavenCentral()

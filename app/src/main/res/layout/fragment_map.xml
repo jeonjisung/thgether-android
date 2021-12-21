@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
         android:id="@+id/main_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,64 +14,57 @@
         app:umanoPanelHeight="0dp"
         app:umanoShadowHeight="10dp"
         tools:context=".mapFragment">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/back_layout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="30dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.kakao.adfit.ads.ba.BannerAdView
+                android:id="@+id/kakao_adView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal" />
 
-            <com.naver.maps.map.MapView
-                android:id="@+id/map_view"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/back_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
+                <com.naver.maps.map.MapView
+                    android:id="@+id/map_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <ImageButton
-                        android:id="@+id/marker_plus"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/circle"
-                        android:src="@drawable/marker_plus_ani" />
+                        <ImageButton
+                            android:id="@+id/marker_plus"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/circle"
+                            android:src="@drawable/marker_plus_ani" />
 
-                    <ImageButton
-                        android:id="@+id/marker_place"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="left"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/circle"
-                        android:src="@drawable/place_ani" />
+                        <ImageButton
+                            android:id="@+id/marker_place"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="left"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/circle"
+                            android:src="@drawable/place_ani" />
+                    </LinearLayout>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <!--                <ImageButton-->
-                    <!--                    android:layout_width="50dp"-->
-                    <!--                    android:layout_height="50dp"-->
-                    <!--                    android:layout_gravity="right"-->
-                    <!--                    android:layout_margin="10dp"-->
-                    <!--                    android:background="@drawable/circle"-->
-                    <!--                    android:src="@drawable/ic_baseline_tune_24" />-->
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

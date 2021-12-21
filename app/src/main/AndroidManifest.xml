@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kr.co.oliveandwine.ssgether">
+    package="kr.co.oliveandwine.trashcan">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -17,9 +17,10 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/trashcan_icon"
         android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.Trashcan">
 
-        <receiver android:name=".Widget">
+        <receiver android:name="kr.co.oliveandwine.trashcan.Widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -29,14 +30,14 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
-        <activity android:name=".MyMarkerPage" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Login" />
-        <activity android:name=".Profile" />
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name=".info_notice" />
-        <activity android:name=".info_question" />
-        <activity android:name=".SplashActivity">
+        <activity android:name="kr.co.oliveandwine.trashcan.MyMarkerPage" />
+        <activity android:name="kr.co.oliveandwine.trashcan.MainActivity" />
+        <activity android:name="kr.co.oliveandwine.trashcan.Login" />
+        <activity android:name="kr.co.oliveandwine.trashcan.Profile" />
+        <activity android:name="kr.co.oliveandwine.trashcan.WelcomeActivity" />
+        <activity android:name="kr.co.oliveandwine.trashcan.info_notice" />
+        <activity android:name="kr.co.oliveandwine.trashcan.info_question" />
+        <activity android:name="kr.co.oliveandwine.trashcan.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,8 +53,8 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />
 
-        <service android:name=".testService" />
-        <service android:name=".util.PedometerService" />
+        <service android:name="kr.co.oliveandwine.trashcan.testService" />
+        <service android:name="kr.co.oliveandwine.trashcan.util.PedometerService" />
     </application>
 
 </manifest>
